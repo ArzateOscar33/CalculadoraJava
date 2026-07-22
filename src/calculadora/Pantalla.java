@@ -9,7 +9,10 @@ package calculadora;
  * @author arzate
  */
 public class Pantalla extends javax.swing.JFrame {
-    
+
+    int num1, num2;
+    String operador;
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Pantalla.class.getName());
 
     /**
@@ -30,22 +33,22 @@ public class Pantalla extends javax.swing.JFrame {
         java.awt.GridBagConstraints gridBagConstraints;
 
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton16 = new javax.swing.JButton();
-        jButton14 = new javax.swing.JButton();
-        jButton15 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton11 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
-        jButton12 = new javax.swing.JButton();
-        jButton20 = new javax.swing.JButton();
+        btn_c = new javax.swing.JButton();
+        btn_division = new javax.swing.JButton();
+        btn_multiplicacion = new javax.swing.JButton();
+        btn_resta = new javax.swing.JButton();
+        btn_4 = new javax.swing.JButton();
+        btn_5 = new javax.swing.JButton();
+        btn_6 = new javax.swing.JButton();
+        btn_9 = new javax.swing.JButton();
+        btn_8 = new javax.swing.JButton();
+        btn_7 = new javax.swing.JButton();
+        btn_suma = new javax.swing.JButton();
+        btn_1 = new javax.swing.JButton();
+        btn_2 = new javax.swing.JButton();
+        btn_3 = new javax.swing.JButton();
+        btn_resultado = new javax.swing.JButton();
+        btn_0 = new javax.swing.JButton();
         txt_Visor = new javax.swing.JLabel();
         fondo = new javax.swing.JLabel();
 
@@ -54,8 +57,8 @@ public class Pantalla extends javax.swing.JFrame {
 
         jPanel1.setLayout(new java.awt.GridBagLayout());
 
-        jButton1.setText("C");
-        jButton1.addActionListener(this::jButton1ActionPerformed);
+        btn_c.setText("C");
+        btn_c.addActionListener(this::btn_cActionPerformed);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 5;
         gridBagConstraints.gridy = 0;
@@ -64,27 +67,30 @@ public class Pantalla extends javax.swing.JFrame {
         gridBagConstraints.ipady = 2;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
-        jPanel1.add(jButton1, gridBagConstraints);
+        jPanel1.add(btn_c, gridBagConstraints);
 
-        jButton2.setText("/");
+        btn_division.setText("/");
+        btn_division.addActionListener(this::btn_divisionActionPerformed);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.ipadx = 9;
         gridBagConstraints.ipady = 2;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
-        jPanel1.add(jButton2, gridBagConstraints);
+        jPanel1.add(btn_division, gridBagConstraints);
 
-        jButton3.setText("X");
+        btn_multiplicacion.setText("X");
+        btn_multiplicacion.addActionListener(this::btn_multiplicacionActionPerformed);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.ipadx = 9;
         gridBagConstraints.ipady = 2;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
-        jPanel1.add(jButton3, gridBagConstraints);
+        jPanel1.add(btn_multiplicacion, gridBagConstraints);
 
-        jButton4.setText("-");
+        btn_resta.setText("-");
+        btn_resta.addActionListener(this::btn_restaActionPerformed);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 8;
         gridBagConstraints.gridy = 0;
@@ -93,9 +99,10 @@ public class Pantalla extends javax.swing.JFrame {
         gridBagConstraints.ipady = 2;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
-        jPanel1.add(jButton4, gridBagConstraints);
+        jPanel1.add(btn_resta, gridBagConstraints);
 
-        jButton16.setText("4");
+        btn_4.setText("4");
+        btn_4.addActionListener(this::btn_4ActionPerformed);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 5;
         gridBagConstraints.gridy = 2;
@@ -104,9 +111,10 @@ public class Pantalla extends javax.swing.JFrame {
         gridBagConstraints.ipady = 2;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
-        jPanel1.add(jButton16, gridBagConstraints);
+        jPanel1.add(btn_4, gridBagConstraints);
 
-        jButton14.setText("5");
+        btn_5.setText("5");
+        btn_5.addActionListener(this::btn_5ActionPerformed);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 6;
         gridBagConstraints.gridy = 2;
@@ -115,9 +123,10 @@ public class Pantalla extends javax.swing.JFrame {
         gridBagConstraints.ipady = 2;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
-        jPanel1.add(jButton14, gridBagConstraints);
+        jPanel1.add(btn_5, gridBagConstraints);
 
-        jButton15.setText("6");
+        btn_6.setText("6");
+        btn_6.addActionListener(this::btn_6ActionPerformed);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 7;
         gridBagConstraints.gridy = 2;
@@ -126,9 +135,10 @@ public class Pantalla extends javax.swing.JFrame {
         gridBagConstraints.ipady = 2;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
-        jPanel1.add(jButton15, gridBagConstraints);
+        jPanel1.add(btn_6, gridBagConstraints);
 
-        jButton6.setText("9");
+        btn_9.setText("9");
+        btn_9.addActionListener(this::btn_9ActionPerformed);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 7;
         gridBagConstraints.gridy = 1;
@@ -137,9 +147,10 @@ public class Pantalla extends javax.swing.JFrame {
         gridBagConstraints.ipady = 2;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
-        jPanel1.add(jButton6, gridBagConstraints);
+        jPanel1.add(btn_9, gridBagConstraints);
 
-        jButton7.setText("8");
+        btn_8.setText("8");
+        btn_8.addActionListener(this::btn_8ActionPerformed);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 6;
         gridBagConstraints.gridy = 1;
@@ -148,9 +159,10 @@ public class Pantalla extends javax.swing.JFrame {
         gridBagConstraints.ipady = 2;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
-        jPanel1.add(jButton7, gridBagConstraints);
+        jPanel1.add(btn_8, gridBagConstraints);
 
-        jButton8.setText("7");
+        btn_7.setText("7");
+        btn_7.addActionListener(this::btn_7ActionPerformed);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 5;
         gridBagConstraints.gridy = 1;
@@ -159,9 +171,10 @@ public class Pantalla extends javax.swing.JFrame {
         gridBagConstraints.ipady = 2;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
-        jPanel1.add(jButton8, gridBagConstraints);
+        jPanel1.add(btn_7, gridBagConstraints);
 
-        jButton5.setText("+");
+        btn_suma.setText("+");
+        btn_suma.addActionListener(this::btn_sumaActionPerformed);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 8;
         gridBagConstraints.gridy = 1;
@@ -171,9 +184,10 @@ public class Pantalla extends javax.swing.JFrame {
         gridBagConstraints.ipady = 2;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
-        jPanel1.add(jButton5, gridBagConstraints);
+        jPanel1.add(btn_suma, gridBagConstraints);
 
-        jButton11.setText("1");
+        btn_1.setText("1");
+        btn_1.addActionListener(this::btn_1ActionPerformed);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 5;
         gridBagConstraints.gridy = 3;
@@ -182,9 +196,10 @@ public class Pantalla extends javax.swing.JFrame {
         gridBagConstraints.ipady = 2;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
-        jPanel1.add(jButton11, gridBagConstraints);
+        jPanel1.add(btn_1, gridBagConstraints);
 
-        jButton9.setText("2");
+        btn_2.setText("2");
+        btn_2.addActionListener(this::btn_2ActionPerformed);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 6;
         gridBagConstraints.gridy = 3;
@@ -193,9 +208,10 @@ public class Pantalla extends javax.swing.JFrame {
         gridBagConstraints.ipady = 2;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
-        jPanel1.add(jButton9, gridBagConstraints);
+        jPanel1.add(btn_2, gridBagConstraints);
 
-        jButton10.setText("3");
+        btn_3.setText("3");
+        btn_3.addActionListener(this::btn_3ActionPerformed);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 7;
         gridBagConstraints.gridy = 3;
@@ -204,9 +220,10 @@ public class Pantalla extends javax.swing.JFrame {
         gridBagConstraints.ipady = 2;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
-        jPanel1.add(jButton10, gridBagConstraints);
+        jPanel1.add(btn_3, gridBagConstraints);
 
-        jButton12.setText("=");
+        btn_resultado.setText("=");
+        btn_resultado.addActionListener(this::btn_resultadoActionPerformed);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 8;
         gridBagConstraints.gridy = 3;
@@ -216,10 +233,11 @@ public class Pantalla extends javax.swing.JFrame {
         gridBagConstraints.ipady = 2;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
-        jPanel1.add(jButton12, gridBagConstraints);
+        jPanel1.add(btn_resultado, gridBagConstraints);
 
-        jButton20.setText("0");
-        jButton20.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_0.setText("0");
+        btn_0.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_0.addActionListener(this::btn_0ActionPerformed);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 5;
         gridBagConstraints.gridy = 4;
@@ -229,13 +247,12 @@ public class Pantalla extends javax.swing.JFrame {
         gridBagConstraints.ipady = 2;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
-        jPanel1.add(jButton20, gridBagConstraints);
+        jPanel1.add(btn_0, gridBagConstraints);
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 480, 640));
 
         txt_Visor.setBackground(new java.awt.Color(255, 255, 255));
         txt_Visor.setFont(new java.awt.Font("Liberation Sans", 1, 14)); // NOI18N
-        txt_Visor.setText(" ");
         txt_Visor.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         txt_Visor.setOpaque(true);
         getContentPane().add(txt_Visor, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, 410, 76));
@@ -247,9 +264,95 @@ public class Pantalla extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btn_cActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cActionPerformed
+        txt_Visor.setText("");
+    }//GEN-LAST:event_btn_cActionPerformed
+
+    private void btn_7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_7ActionPerformed
+        txt_Visor.setText(txt_Visor.getText() + "7");
+    }//GEN-LAST:event_btn_7ActionPerformed
+
+    private void btn_8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_8ActionPerformed
+
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        txt_Visor.setText(txt_Visor.getText() + "8");
+    }//GEN-LAST:event_btn_8ActionPerformed
+
+    private void btn_9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_9ActionPerformed
+
+        // TODO add your handling code here:
+        txt_Visor.setText(txt_Visor.getText() + "9");
+    }//GEN-LAST:event_btn_9ActionPerformed
+
+    private void btn_4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_4ActionPerformed
+        txt_Visor.setText(txt_Visor.getText() + "4");
+    }//GEN-LAST:event_btn_4ActionPerformed
+
+    private void btn_5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_5ActionPerformed
+        txt_Visor.setText(txt_Visor.getText() + "5");
+    }//GEN-LAST:event_btn_5ActionPerformed
+
+    private void btn_6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_6ActionPerformed
+        txt_Visor.setText(txt_Visor.getText() + "6");
+    }//GEN-LAST:event_btn_6ActionPerformed
+
+    private void btn_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_1ActionPerformed
+        txt_Visor.setText(txt_Visor.getText() + "1");
+    }//GEN-LAST:event_btn_1ActionPerformed
+
+    private void btn_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_2ActionPerformed
+        txt_Visor.setText(txt_Visor.getText() + "2");
+    }//GEN-LAST:event_btn_2ActionPerformed
+
+    private void btn_3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_3ActionPerformed
+        txt_Visor.setText(txt_Visor.getText() + "3");
+    }//GEN-LAST:event_btn_3ActionPerformed
+
+    private void btn_0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_0ActionPerformed
+        txt_Visor.setText(txt_Visor.getText() + "0");
+    }//GEN-LAST:event_btn_0ActionPerformed
+
+    private void btn_divisionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_divisionActionPerformed
+        num1 = Integer.parseInt(txt_Visor.getText());
+        operador = "/";
+        txt_Visor.setText("");
+    }//GEN-LAST:event_btn_divisionActionPerformed
+
+    private void btn_multiplicacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_multiplicacionActionPerformed
+        num1 = Integer.parseInt(txt_Visor.getText());
+        operador = "*";
+        txt_Visor.setText("");
+    }//GEN-LAST:event_btn_multiplicacionActionPerformed
+
+    private void btn_restaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_restaActionPerformed
+        num1 = Integer.parseInt(txt_Visor.getText());
+        operador = "-";
+        txt_Visor.setText("");
+    }//GEN-LAST:event_btn_restaActionPerformed
+
+    private void btn_sumaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_sumaActionPerformed
+        num1 = Integer.parseInt(txt_Visor.getText());
+        operador = "+";
+        txt_Visor.setText("");
+    }//GEN-LAST:event_btn_sumaActionPerformed
+
+    private void btn_resultadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_resultadoActionPerformed
+        num2 = Integer.parseInt(txt_Visor.getText());
+        switch(operador) {
+            case "+":
+                txt_Visor.setText(Integer.toString(num1 + num2));
+                break;
+            case "-":
+                txt_Visor.setText(Integer.toString(num1 - num2));
+                break;
+            case "*":
+                txt_Visor.setText(Integer.toString(num1 * num2));
+                break;
+            case "/":
+                txt_Visor.setText(Integer.toString(num1 / num2));
+                break;
+        }
+    }//GEN-LAST:event_btn_resultadoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -277,23 +380,23 @@ public class Pantalla extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_0;
+    private javax.swing.JButton btn_1;
+    private javax.swing.JButton btn_2;
+    private javax.swing.JButton btn_3;
+    private javax.swing.JButton btn_4;
+    private javax.swing.JButton btn_5;
+    private javax.swing.JButton btn_6;
+    private javax.swing.JButton btn_7;
+    private javax.swing.JButton btn_8;
+    private javax.swing.JButton btn_9;
+    private javax.swing.JButton btn_c;
+    private javax.swing.JButton btn_division;
+    private javax.swing.JButton btn_multiplicacion;
+    private javax.swing.JButton btn_resta;
+    private javax.swing.JButton btn_resultado;
+    private javax.swing.JButton btn_suma;
     private javax.swing.JLabel fondo;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton12;
-    private javax.swing.JButton jButton14;
-    private javax.swing.JButton jButton15;
-    private javax.swing.JButton jButton16;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton20;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel txt_Visor;
     // End of variables declaration//GEN-END:variables
