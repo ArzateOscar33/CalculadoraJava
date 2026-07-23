@@ -22,7 +22,6 @@ public class Pantalla extends javax.swing.JFrame {
     String entradaActual="";
     String operador="";
     boolean bandera=false;
-    int num1,num2;
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Pantalla.class.getName());
 
@@ -285,6 +284,10 @@ public class Pantalla extends javax.swing.JFrame {
 
     private void btn_cActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cActionPerformed
         txt_Visor.setText("");
+    double acumulado=0.0;
+    String entradaActual="";
+    String operador="";
+    boolean bandera=false;
     }//GEN-LAST:event_btn_cActionPerformed
 
     private void btn_7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_7ActionPerformed
