@@ -3,6 +3,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package calculadora;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
+import javax.swing.AbstractAction;
+import javax.swing.JButton;
+import javax.swing.JComponent;
+import javax.swing.KeyStroke;
+
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -10,8 +18,11 @@ package calculadora;
  */
 public class Pantalla extends javax.swing.JFrame {
 
-    int num1, num2;
-    String operador;
+    double acumulado=0.0;
+    String entradaActual="";
+    String operador="";
+    boolean bandera=false;
+    int num1,num2;
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Pantalla.class.getName());
 
@@ -20,6 +31,7 @@ public class Pantalla extends javax.swing.JFrame {
      */
     public Pantalla() {
         initComponents();
+            configurarTeclado();
     }
 
     /**
@@ -53,6 +65,8 @@ public class Pantalla extends javax.swing.JFrame {
         fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(480, 800));
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new java.awt.GridBagLayout());
@@ -163,6 +177,11 @@ public class Pantalla extends javax.swing.JFrame {
 
         btn_7.setText("7");
         btn_7.addActionListener(this::btn_7ActionPerformed);
+        btn_7.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btn_7KeyPressed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 5;
         gridBagConstraints.gridy = 1;
@@ -269,91 +288,346 @@ public class Pantalla extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_cActionPerformed
 
     private void btn_7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_7ActionPerformed
-        txt_Visor.setText(txt_Visor.getText() + "7");
+      
+        procesarNumero("7");
+        
     }//GEN-LAST:event_btn_7ActionPerformed
 
     private void btn_8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_8ActionPerformed
 
-        // TODO add your handling code here:
-        txt_Visor.setText(txt_Visor.getText() + "8");
+       procesarNumero("8");
     }//GEN-LAST:event_btn_8ActionPerformed
 
     private void btn_9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_9ActionPerformed
 
-        // TODO add your handling code here:
-        txt_Visor.setText(txt_Visor.getText() + "9");
+        procesarNumero("9");
     }//GEN-LAST:event_btn_9ActionPerformed
 
     private void btn_4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_4ActionPerformed
-        txt_Visor.setText(txt_Visor.getText() + "4");
+       
+        procesarNumero("4");
     }//GEN-LAST:event_btn_4ActionPerformed
 
     private void btn_5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_5ActionPerformed
-        txt_Visor.setText(txt_Visor.getText() + "5");
+       
+        procesarNumero("5");
     }//GEN-LAST:event_btn_5ActionPerformed
 
     private void btn_6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_6ActionPerformed
-        txt_Visor.setText(txt_Visor.getText() + "6");
+     
+        procesarNumero("6");
     }//GEN-LAST:event_btn_6ActionPerformed
 
     private void btn_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_1ActionPerformed
-        txt_Visor.setText(txt_Visor.getText() + "1");
+     
+        procesarNumero("1");
     }//GEN-LAST:event_btn_1ActionPerformed
 
     private void btn_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_2ActionPerformed
-        txt_Visor.setText(txt_Visor.getText() + "2");
+   
+        procesarNumero("2");
     }//GEN-LAST:event_btn_2ActionPerformed
 
     private void btn_3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_3ActionPerformed
-        txt_Visor.setText(txt_Visor.getText() + "3");
+        
+        procesarNumero("3");
     }//GEN-LAST:event_btn_3ActionPerformed
 
     private void btn_0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_0ActionPerformed
-        txt_Visor.setText(txt_Visor.getText() + "0");
+      
+        procesarNumero("0");
     }//GEN-LAST:event_btn_0ActionPerformed
 
     private void btn_divisionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_divisionActionPerformed
-        num1 = Integer.parseInt(txt_Visor.getText());
-        operador = "/";
-        txt_Visor.setText("");
+         procesarOperador("/");
     }//GEN-LAST:event_btn_divisionActionPerformed
 
     private void btn_multiplicacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_multiplicacionActionPerformed
-        num1 = Integer.parseInt(txt_Visor.getText());
-        operador = "*";
-        txt_Visor.setText("");
+ procesarOperador("*");
     }//GEN-LAST:event_btn_multiplicacionActionPerformed
 
     private void btn_restaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_restaActionPerformed
-        num1 = Integer.parseInt(txt_Visor.getText());
-        operador = "-";
-        txt_Visor.setText("");
+        procesarOperador("-");
     }//GEN-LAST:event_btn_restaActionPerformed
 
     private void btn_sumaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_sumaActionPerformed
-        num1 = Integer.parseInt(txt_Visor.getText());
-        operador = "+";
-        txt_Visor.setText("");
+         procesarOperador("+");
     }//GEN-LAST:event_btn_sumaActionPerformed
 
     private void btn_resultadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_resultadoActionPerformed
-        num2 = Integer.parseInt(txt_Visor.getText());
-        switch(operador) {
-            case "+":
-                txt_Visor.setText(Integer.toString(num1 + num2));
-                break;
-            case "-":
-                txt_Visor.setText(Integer.toString(num1 - num2));
-                break;
-            case "*":
-                txt_Visor.setText(Integer.toString(num1 * num2));
-                break;
-            case "/":
-                txt_Visor.setText(Integer.toString(num1 / num2));
-                break;
-        }
+procesarResultado();
     }//GEN-LAST:event_btn_resultadoActionPerformed
+    private void procesarOperador(String nuevoOperador) {
 
+        //si no hay ningun numero escrito
+        if (entradaActual.isEmpty()) {
+            //si ya existe un operador solamente lo reemplazamos
+            if (!operador.isEmpty()) {
+                operador = nuevoOperador;
+
+            }
+            return;
+        }
+        
+        //Convertimos el nmero que el usuario escribio 
+        double numeroActual= Double.parseDouble(entradaActual);
+        
+        //si es el prmer operador
+        if(operador.isEmpty()){
+            acumulado=numeroActual;
+        }else{
+            //Ejecutamos el operador que etaba pendiente
+            switch(operador){
+                case "+" -> acumulado=acumulado+numeroActual;
+                case "-" -> acumulado=acumulado-numeroActual;
+                case "*" -> acumulado=acumulado*numeroActual;
+                case "/" -> {
+                    if(numeroActual==0){
+                        txt_Visor.setText("Error : Division entre cero");
+                        return;
+                        
+                    }
+                    
+                    acumulado=acumulado/numeroActual;
+                }
+            }
+        }
+        
+        operador=nuevoOperador;
+        
+        //preapramos la escritura del siguiente numero
+        entradaActual="";
+        bandera=true;
+        
+        //imprimimios el acumulado
+      txt_Visor.setText(formatearNumero(acumulado));
+    }
+    private void procesarResultado() {
+
+    // No hay operación pendiente
+    if (operador.isEmpty()) {
+        return;
+    }
+
+    // Todavía no se escribió el segundo número
+    if (entradaActual.isEmpty()) {
+        return;
+    }
+
+    double numeroActual = Double.parseDouble(entradaActual);
+
+    switch (operador) {
+
+        case "+" -> acumulado = acumulado + numeroActual;
+
+        case "-" -> acumulado = acumulado - numeroActual;
+
+        case "*" -> acumulado = acumulado * numeroActual;
+
+        case "/" -> {
+            if (numeroActual == 0) {
+                txt_Visor.setText("Error: división entre cero");
+
+                acumulado = 0.0;
+                entradaActual = "";
+                operador = "";
+                bandera = true;
+
+                return;
+            }
+
+            acumulado = acumulado / numeroActual;
+        }
+    }
+
+    txt_Visor.setText(formatearNumero(acumulado));
+
+    // Conservamos el resultado para poder seguir operando
+    entradaActual = Double.toString(acumulado);
+
+    // Ya no queda ninguna operación pendiente
+    operador = "";
+
+    // El siguiente número comenzará una operación nueva
+    bandera = true;
+}
+    private String formatearNumero(double numero) {
+
+    if (numero == Math.rint(numero)) {
+        return Long.toString((long) numero);
+    }
+
+    return Double.toString(numero);
+}
+    private void btn_7KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btn_7KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_7KeyPressed
+
+    private void procesarNumero(String numeroPresionado){
+        if(bandera==true){
+            entradaActual=numeroPresionado;
+            bandera=false;
+        }
+        else{
+            entradaActual+=numeroPresionado;
+            
+        }
+        txt_Visor.setText(entradaActual);
+    }
+    
+    private void asociarTecla(
+        String nombreAccion,
+        KeyStroke tecla,
+        JButton boton
+) {
+    getRootPane()
+            .getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
+            .put(tecla, nombreAccion);
+
+    getRootPane()
+            .getActionMap()
+            .put(nombreAccion, new AbstractAction() {
+                
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    boton.doClick();
+                }
+            });
+}
+    
+    private void configurarTeclado() {
+
+    // Números de la fila superior
+    asociarTecla("numero0", KeyStroke.getKeyStroke('0'), btn_0);
+    asociarTecla("numero1", KeyStroke.getKeyStroke('1'), btn_1);
+    asociarTecla("numero2", KeyStroke.getKeyStroke('2'), btn_2);
+    asociarTecla("numero3", KeyStroke.getKeyStroke('3'), btn_3);
+    asociarTecla("numero4", KeyStroke.getKeyStroke('4'), btn_4);
+    asociarTecla("numero5", KeyStroke.getKeyStroke('5'), btn_5);
+    asociarTecla("numero6", KeyStroke.getKeyStroke('6'), btn_6);
+    asociarTecla("numero7", KeyStroke.getKeyStroke('7'), btn_7);
+    asociarTecla("numero8", KeyStroke.getKeyStroke('8'), btn_8);
+    asociarTecla("numero9", KeyStroke.getKeyStroke('9'), btn_9);
+
+    // Operadores del teclado normal
+    asociarTecla("suma", KeyStroke.getKeyStroke('+'), btn_suma);
+    asociarTecla("resta", KeyStroke.getKeyStroke('-'), btn_resta);
+    asociarTecla(
+            "multiplicacion",
+            KeyStroke.getKeyStroke('*'),
+            btn_multiplicacion
+    );
+    asociarTecla(
+            "division",
+            KeyStroke.getKeyStroke('/'),
+            btn_division
+    );
+
+    // Resultado
+    asociarTecla(
+            "igual",
+            KeyStroke.getKeyStroke('='),
+            btn_resultado
+    );
+
+    asociarTecla(
+            "enter",
+            KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0),
+            btn_resultado
+    );
+
+    // Limpiar calculadora
+    asociarTecla(
+            "escape",
+            KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0),
+            btn_c
+    );
+    
+    
+    asociarTecla(
+        "numpad0",
+        KeyStroke.getKeyStroke(KeyEvent.VK_NUMPAD0, 0),
+        btn_0
+);
+
+asociarTecla(
+        "numpad1",
+        KeyStroke.getKeyStroke(KeyEvent.VK_NUMPAD1, 0),
+        btn_1
+);
+
+asociarTecla(
+        "numpad2",
+        KeyStroke.getKeyStroke(KeyEvent.VK_NUMPAD2, 0),
+        btn_2
+);
+
+asociarTecla(
+        "numpad3",
+        KeyStroke.getKeyStroke(KeyEvent.VK_NUMPAD3, 0),
+        btn_3
+);
+
+asociarTecla(
+        "numpad4",
+        KeyStroke.getKeyStroke(KeyEvent.VK_NUMPAD4, 0),
+        btn_4
+);
+
+asociarTecla(
+        "numpad5",
+        KeyStroke.getKeyStroke(KeyEvent.VK_NUMPAD5, 0),
+        btn_5
+);
+
+asociarTecla(
+        "numpad6",
+        KeyStroke.getKeyStroke(KeyEvent.VK_NUMPAD6, 0),
+        btn_6
+);
+
+asociarTecla(
+        "numpad7",
+        KeyStroke.getKeyStroke(KeyEvent.VK_NUMPAD7, 0),
+        btn_7
+);
+
+asociarTecla(
+        "numpad8",
+        KeyStroke.getKeyStroke(KeyEvent.VK_NUMPAD8, 0),
+        btn_8
+);
+
+asociarTecla(
+        "numpad9",
+        KeyStroke.getKeyStroke(KeyEvent.VK_NUMPAD9, 0),
+        btn_9
+);
+
+asociarTecla(
+        "sumaNumpad",
+        KeyStroke.getKeyStroke(KeyEvent.VK_ADD, 0),
+        btn_suma
+);
+
+asociarTecla(
+        "restaNumpad",
+        KeyStroke.getKeyStroke(KeyEvent.VK_SUBTRACT, 0),
+        btn_resta
+);
+
+asociarTecla(
+        "multiplicacionNumpad",
+        KeyStroke.getKeyStroke(KeyEvent.VK_MULTIPLY, 0),
+        btn_multiplicacion
+);
+
+asociarTecla(
+        "divisionNumpad",
+        KeyStroke.getKeyStroke(KeyEvent.VK_DIVIDE, 0),
+        btn_division
+);
+}
     /**
      * @param args the command line arguments
      */
